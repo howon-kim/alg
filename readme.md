@@ -1,5 +1,4 @@
 # Algorithm Study
----
 ## Additional Information
 ### [Github SSH Simple Guide](https://help.github.com/en/articles/connecting-to-github-with-ssh)
 ###### Add Identity without Keychain
