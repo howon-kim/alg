@@ -6,6 +6,8 @@
 There may be times in which you don't want the passphrase stored in the keychain, but don't want to have to enter the passphrase over and over again.
 You can do that like this:
 ```bash
+ssh-add
+or
 ssh-add ~/.ssh/id_rsa 
 ```
 This will ask you for the passphrase, enter it and it will not ask again until you restart.
