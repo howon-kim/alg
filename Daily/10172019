@@ -39,4 +39,36 @@ Paste your submission code
 Paste your submission code
 
 -- Howon --
-Paste your submission code
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (t1 == null && t2 == null) {
+            return null;
+        }
+        
+        TreeNode answer = null;
+        
+        if (t1 != null && t2 == null) {
+            answer = new TreeNode(t1.val);
+            answer.left = mergeTrees(t1.left, t2);
+            answer.right = mergeTrees(t1.right, t2);
+        } else if (t1 == null && t2 != null) {
+            answer = new TreeNode(t2.val);
+            answer.left = mergeTrees(t1, t2.left);
+            answer.right = mergeTrees(t1, t2.right);
+        } else {
+            answer = new TreeNode(t1.val + t2.val);
+            answer.left = mergeTrees(t1.left, t2.left);
+            answer.right = mergeTrees(t1.right, t2.right);
+        }
+        return answer;
+    }
+}
