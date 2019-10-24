@@ -1,0 +1,74 @@
+https://leetcode.com/problems/linked-list-cycle/
+https://leetcode.com/problems/merge-two-binary-trees/
+
+
+141. Linked List Cycle
+-- Howon Kim --
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Linked List Cycle.
+Memory Usage: 37.4 MB, less than 99.51% of Java online submissions for Linked List Cycle.
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        while (head != null) {
+            if (head.val == Integer.MAX_VALUE){
+                return true;
+            }
+            head.val = Integer.MAX_VALUE;
+            head = head.next;
+        }
+        return false;
+    }
+}
+
+-- Aiden --
+Paste your submission code
+
+617. Merge Two Binary Trees
+-- Aiden --
+Paste your submission code
+
+-- Howon --
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (t1 == null && t2 == null) {
+            return null;
+        }
+        
+        TreeNode answer = null;
+        
+        if (t1 != null && t2 == null) {
+            answer = new TreeNode(t1.val);
+            answer.left = mergeTrees(t1.left, t2);
+            answer.right = mergeTrees(t1.right, t2);
+        } else if (t1 == null && t2 != null) {
+            answer = new TreeNode(t2.val);
+            answer.left = mergeTrees(t1, t2.left);
+            answer.right = mergeTrees(t1, t2.right);
+        } else {
+            answer = new TreeNode(t1.val + t2.val);
+            answer.left = mergeTrees(t1.left, t2.left);
+            answer.right = mergeTrees(t1.right, t2.right);
+        }
+        return answer;
+    }
+}
