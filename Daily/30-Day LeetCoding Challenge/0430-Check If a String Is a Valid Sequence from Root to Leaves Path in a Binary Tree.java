@@ -46,5 +46,49 @@ Depth-first search (DFS) with the parameters: current node in the binary tree an
 When reaching at final position check if it is a leaf node. 
 
 
-
+63 / 63 test cases passed.
+Status: Accepted
+Runtime: 0 ms
+Memory Usage: 40.1 MB
 */
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ 
+class Solution {
+    public boolean isValidSequence(TreeNode root, int[] arr) {
+        return helper(root, arr, 0);
+    }
+    
+    public boolean helper(TreeNode root, int[] arr, int index) {
+        if (root == null) {
+            return false;
+        }
+        
+        if (root.val != arr[index]) {
+            return false;
+        } else {
+            if (index == arr.length - 1) {
+                if (root.left == null && root.right == null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return helper(root.left, arr, index + 1) || helper(root.right, arr, index + 1);
+        }
+    }    
+}
